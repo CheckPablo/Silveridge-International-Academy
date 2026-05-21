@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silveridge International | Editorial Design</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --purple: #2A0845; 
+            --gold: #C5A059;  
+            --text-dark: #1A1A1A;
+            --cream: #FAF8F5; /* Gives an expensive paper feel */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .editorial-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--purple);
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Elegant Button --- */
+        .btn-editorial {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 35px;
+            background-color: var(--purple);
+            color: var(--white);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--purple);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-editorial::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background-color: var(--gold);
+            transition: all 0.4s ease;
+            z-index: 1;
+        }
+
+        .btn-editorial:hover::before { left: 0; }
+        .btn-editorial span { position: relative; z-index: 2; transition: color 0.4s; }
+        .btn-editorial:hover span { color: var(--purple); font-weight: 700; }
+
+        /* --- Minimal Header --- */
+        header {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            height: 60px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+        .brand-text span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
+            margin-top: 5px;
+        }
+
+        nav a:hover::after { width: 100%; }
+
+        /* --- Asymmetrical Hero --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 0 0 55%;
+            padding-right: 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-size: 5.5rem;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero-content h1 i {
+            color: var(--gold);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 80%;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--gold);
+            padding-left: 20px;
+            color: #444;
+        }
+
+        .hero-image-box {
+            flex: 0 0 45%;
+            position: relative;
+            height: 70vh;
+        }
+
+        .hero-img-inner {
+            width: 100%;
+            height: 100%;
+            background: url('hero-bg.jpg') center/cover;
+            background-color: #d1d1d1;
+            position: absolute;
+            right: -5%; /* Pulls image slightly off screen for editorial look */
+            box-shadow: -20px 20px 0px rgba(42, 8, 69, 0.05);
+        }
+
+        /* --- Staggered Grid Section --- */
+        .programs {
+            padding: 120px 5%;
+            background-color: var(--white);
+        }
+
+        .section-heading {
+            font-size: 3rem;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .staggered-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            padding: 40px;
+            background: var(--cream);
+            border-top: 1px solid var(--gold);
+        }
+
+        /* Stagger the middle column down */
+        .grid-item:nth-child(2) {
+            transform: translateY(40px);
+        }
+
+        .grid-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .grid-item p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* --- High Contrast Banner --- */
+        .dark-banner {
+            background-color: var(--purple);
+            color: var(--white);
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .banner-text {
+            flex: 0 0 60%;
+        }
+
+        .banner-text h2 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .banner-text p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 500px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 5% 40px;
+            background: var(--cream);
+            border-top: 1px solid #EAEAEA;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            justify-content: space-between;
+        }
+
+        .footer-logo img { height: 80px; margin-bottom: 20px; }
+        
+        .footer-block h4 {
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-block p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--purple);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; padding-top: 150px; text-align: center; }
+            .hero-content { flex: 1; padding: 0; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-content p { border: none; margin: 0 auto 40px; padding: 0; }
+            .hero-image-box { width: 100%; height: 400px; margin-top: 40px; }
+            .hero-img-inner { right: 0; box-shadow: none; }
+            .staggered-grid { grid-template-columns: 1fr; }
+            .grid-item:nth-child(2) { transform: translateY(0); }
+            .dark-banner { flex-direction: column; text-align: center; gap: 40px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="image_42bb3c.jpg" alt="Silveridge Crest">
+            <div class="brand-text">
+                <strong>Silveridge</strong>
+                <span>International Academy</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#about">The Academy</a>
+            <a href="#academics">Academics</a>
+            <a href="#boarding">Boarding</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tradition,<br><i>meets</i><br>Tomorrow.</h1>
+            <p>A distinguished educational environment in Sunway City, providing exceptional academics from Baby Class through Grade 7 alongside premium boarding facilities.</p>
+            <a href="#admissions" class="btn-editorial"><span>Begin Admissions</span></a>
+        </div>
+        <div class="hero-image-box">
+            <!-- Ensure hero-bg.jpg is in your folder -->
+            <div class="hero-img-inner"></div>
+        </div>
+    </section>
+
+    <section class="programs" id="academics">
+        <h2 class="section-heading">Educational Pathways</h2>
+        <div class="staggered-grid">
+            <div class="grid-item">
+                <h3>Early Years</h3>
+                <p>Our Baby Class and ECD programs foster curiosity, creativity, and a foundational love for learning in a beautifully nurtured environment.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Primary Grades</h3>
+                <p>From Grade 1 to 7, our rigorous curriculum challenges students intellectually while supporting their emotional and social growth.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Boarding Life</h3>
+                <p>We provide a structured, safe, and deeply supportive home away from home, developing independence and lifelong friendships.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-banner">
+        <div class="banner-text">
+            <h2>Little London Shop</h2>
+            <p>Quality meets style. Explore our sister store in Avondale for an exclusive range of premium clothing and accessories with unmatched customer care.</p>
+        </div>
+        <div>
+            <a href="#" class="btn-editorial" style="border-color: var(--gold);"><span>Visit Avondale Store</span></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="image_42bb3c.jpg" alt="Silveridge Logo">
+        </div>
+        <div class="footer-block">
+            <h4>The Academy</h4>
+            <p>676 Acacia Street<br>Sunway City, Harare</p>
+            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">077 673 8858</p>
+            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">silveridgeacademy@gmail.com</p>
+        </div>
+        <div class="footer-block">
+            <h4>Little London</h4>
+            <p>10 Kerry Road<br>Avondale, Harare</p>
+            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">077 673 8858</p>
+            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">+44 7447 918293</p>
+        </div>
+    </footer>
+
+</body>
+</html>

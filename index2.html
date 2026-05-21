@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silveridge International Academy | Nurturing Excellence</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --primary-purple: #2E004F;
+            --accent-gold: #D4AF37;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, .brand-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-purple);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 14px 28px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #b5952f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-gold);
+            color: var(--white);
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .brand-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- HERO SECTION (FLOATING CARD) --- */
+        #hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Placeholder for the background image */
+            background: url('hero-bg.jpg') center/cover no-repeat;
+            background-color: #e0e0e0; /* Fallback color */
+            padding: 40px 5%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(46, 0, 79, 0.6), rgba(46, 0, 79, 0.3));
+        }
+
+        .hero-card {
+            position: relative;
+            background: var(--white);
+            padding: 60px 50px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 650px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-top: 6px solid var(--accent-gold);
+            z-index: 10;
+        }
+
+        .hero-card img {
+            height: 90px;
+            margin-bottom: 25px;
+        }
+
+        .hero-card h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-card p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 35px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 20px auto 0;
+        }
+
+        /* --- ACADEMICS GRID --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* --- LITTLE LONDON BANNER --- */
+        #shop-banner {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        #shop-banner h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        #shop-banner .section-title::after {
+            background-color: var(--white);
+        }
+
+        #shop-banner p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a002e; /* Darker purple for footer */
+            color: var(--white);
+            padding: 80px 5% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        footer h3 {
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Add a hamburger menu for full production */
+            }
+            .hero-card {
+                padding: 40px 30px;
+            }
+            .hero-card h1 {
+                font-size: 2.2rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="image_42bb3c.jpg" alt="Silveridge Logo" class="nav-logo">
+            <div>
+                <div class="brand-text">Silveridge</div>
+                <div class="brand-sub">International Academy</div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#boarding">Boarding</a></li>
+                <li><a href="#contact" class="btn" style="padding: 10px 20px; color: white;">Apply Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-card">
+            <img src="image_42bb3c.jpg" alt="Silveridge Shield">
+            <h1>Nurturing Excellence.</h1>
+            <p>Providing quality education from Baby Class up to Grade 7 in a safe, nurturing, and stimulating environment in Sunway City.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn">Enroll Today</a>
+                <a href="#academics" class="btn btn-outline">Explore Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="academics">
+        <h2 class="section-title">Academic Excellence</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Early Childhood</h3>
+                <p>Our Baby Class, ECD A, and ECD B programs provide a strong, play-based foundation for lifelong learning in a warm and caring setting.</p>
+                <a href="#contact" style="color: var(--accent-gold); font-weight: 600;">Learn More &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Primary Education</h3>
+                <p>From Grade 1 to Grade 7, we offer a rigorous and engaging curriculum designed to help every student reach their full potential and prepare for the future.</p>
+                <a href="#contact" style="color: var(--accent-gold); font-weight: 600;">Learn More &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Boarding Facilities</h3>
+                <p>Secure, comfortable boarding facilities ensuring students thrive in a structured, supportive home-away-from-home environment.</p>
+                <a href="#contact" style="color: var(--accent-gold); font-weight: 600;">View Facilities &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop-banner">
+        <h2 class="section-title" style="margin-bottom: 20px;">Little London Shop</h2>
+        <p>Looking for school supplies, quality clothing, or accessories? Visit our sister store in Avondale for excellent customer service and premium products.</p>
+        <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-purple);">Visit The Shop</a>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h3>Silveridge Academy</h3>
+                <p>📍 676 Acacia Street<br>Sunway City, Harare</p>
+                <p>📞 077 673 8858<br>📞 +44 7477 918293</p>
+                <p>📧 silveridgeacademy@gmail.com</p>
+            </div>
+            <div>
+                <h3>Little London Shop</h3>
+                <p>📍 10 Kerry Road<br>Avondale, Harare</p>
+                <p>📞 077 673 8858<br>📞 +44 7447 918293</p>
+            </div>
+            <div>
+                <h3>Admissions Open</h3>
+                <p>We are currently accepting applications for the upcoming term. Contact us today to secure your child's place or schedule a campus tour.</p>
+                <br>
+                <p><em>Built by Tinashe Sachikonye</em></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Silveridge International Academy & Little London Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
