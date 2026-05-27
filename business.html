@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silveridge International | Business Class</title>
+    
+    <link rel="icon" type="image/png" href="assets/silveridge_logo_assets/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2E004F; 
+            --primary-light: #F4EEF9;
+            --accent: #D4AF37;  
+            --text-dark: #222222;
+            --text-light: #666666;
+            --bg-body: #FDFBFF;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: var(--bg-body); line-height: 1.6; }
+        h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; color: var(--primary); }
+        a { text-decoration: none; transition: all 0.3s ease; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        /* Default to Mobile Shield Logo Size */
+        .nav-logo { width: 45px; height: auto; transition: all 0.3s ease; }
+        
+        nav { display: flex; gap: 30px; align-items: center; }
+        nav a { color: var(--text-dark); font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { color: var(--accent); }
+        .btn-solid { background-color: var(--primary); color: #FFFFFF; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; }
+        .btn-solid:hover { background-color: #1a002e; color: #FFFFFF; }
+
+        /* --- Page Hero --- */
+        .page-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 60px 5%;
+            background-color: var(--primary-light);
+        }
+        .hero-text { flex: 1; min-width: 300px; max-width: 600px; }
+        .hero-tag { display: inline-block; background: var(--primary); color: var(--accent); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 30px; }
+        .hero-image { flex: 1; min-width: 300px; display: flex; justify-content: center; }
+        .hero-image img { width: 100%; max-width: 650px; border-radius: 20px; box-shadow: 0 20px 40px rgba(46,0,79,0.15); border: 6px solid var(--white); }
+
+        /* --- Grid Sections --- */
+        .content-section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 2rem; margin-bottom: 15px; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .card p { color: var(--text-light); font-size: 0.95rem; }
+
+        /* --- Footer --- */
+        footer { background-color: #1a002e; color: #FFFFFF; padding: 70px 5% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+        .footer-col h4 { color: var(--accent); font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 20px; }
+        .footer-col p { color: #A0A0A0; font-size: 0.9rem; margin-bottom: 10px; }
+
+        /* --- Responsive --- */
+        @media (min-width: 768px) {
+            .nav-logo { width: 140px; }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero-text h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/silveridge_logo_assets/logo-desktop.png">
+                <img src="assets/silveridge_logo_assets/logo-mobile.png" alt="Silveridge Academy" class="nav-logo">
+            </picture>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#curriculum">Curriculum</a>
+            <a href="#contact" class="btn-solid">Enroll Now</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-text">
+            <span class="hero-tag">Starting from ECD A</span>
+            <h1 class="serif">Business Class Programme</h1>
+            <p><strong>Preparing young minds today for tomorrow's leaders.</strong><br>Our Business Class Programme introduces children to the world of business in a fun, practical, and age-appropriate way. We build confidence, creativity, and entrepreneurial thinking from an early age.</p>
+            <a href="#contact" class="btn-solid" style="background: var(--accent); color: var(--white);">Secure Your Spot</a>
+        </div>
+        <div class="hero-image">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/images/hero-business-desktop.webp">
+                <img src="assets/images/hero-business-mobile.webp" alt="Business Class Programme">
+            </picture>
+        </div>
+    </section>
+
+    <section class="content-section" id="curriculum">
+        <div class="section-header">
+            <h2 class="serif">Our Business Class Introduces Children To:</h2>
+        </div>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h3>Basic Business Concepts</h3>
+                <p>Understanding what business is and how it fundamentally works.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛒</div>
+                <h3>Buying & Selling</h3>
+                <p>Fun activities that teach exchange, value, and customer service.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>Understanding Money</h3>
+                <p>Learning about money, understanding needs vs. wants, and the value of saving.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💡</div>
+                <h3>Creative Thinking</h3>
+                <p>Encouraging original ideas, innovation, and strong decision making.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🗣️</div>
+                <h3>Confidence Building</h3>
+                <p>Helping children communicate and express their ideas clearly and present with confidence.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧩</div>
+                <h3>Problem Solving</h3>
+                <p>Developing critical thinking to solve real-life challenges.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Mini Business Projects</h3>
+                <p>Hands-on projects that make learning practical, exciting, and memorable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: var(--white);">
+        <div class="section-header">
+            <span style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Not just for the classroom</span>
+            <h2 class="serif">Preparing for the Future</h2>
+        </div>
+        <div class="grid-container">
+            <div class="card" style="border-top-color: var(--accent);">
+                <div class="card-icon">🌟</div>
+                <h3>Early Start, Bright Future</h3>
+                <p>Building strong foundations for future leaders and entrepreneurs.</p>
+            </div>
+            <div class="card" style="border-top-color: var(--accent);">
+                <div class="card-icon">📚</div>
+                <h3>Integrated Learning</h3>
+                <p>Business concepts integrated with Mathematics, English & Life Skills.</p>
+            </div>
+            <div class="card" style="border-top-color: var(--accent);">
+                <div class="card-icon">🎯</div>
+                <h3>Age Appropriate Approach</h3>
+                <p>Fun, practical, and interactive lessons specifically designed for young learners.</p>
+            </div>
+            <div class="card" style="border-top-color: var(--accent);">
+                <div class="card-icon">🌍</div>
+                <h3>Real Life Application</h3>
+                <p>Practical activities that connect learning directly to the real world.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <picture>
+                    <source media="(min-width: 768px)" srcset="assets/silveridge_logo_assets/logo-footer.png">
+                    <img src="assets/silveridge_logo_assets/logo-mobile.png" alt="Silveridge Academy" style="width: 110px; margin-bottom: 20px;">
+                </picture>
+                <p>Learn. Create. Lead. Succeed.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>📍 124 Silveridge, Chimwemwe Road, Harare</p>
+                <p>📞 +263 78 556 0724 / +263 77 556 0724</p>
+                <p>✉ silveridgeacademy@gmail.com</p>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; color: #666; font-size: 0.8rem; margin-top: 40px;">
+            &copy; 2026 Silveridge International Academy. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

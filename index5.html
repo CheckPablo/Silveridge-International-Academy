@@ -3,375 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silveridge International | Editorial Design</title>
+    <title>Silveridge International | Modern Bento</title>
+    
+    <link rel="icon" type="image/png" href="assets/silveridge_logo_assets/favicon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --purple: #2A0845; 
-            --gold: #C5A059;  
-            --text-dark: #1A1A1A;
-            --cream: #FAF8F5; /* Gives an expensive paper feel */
+            --primary: #2E004F; 
+            --accent: #D4AF37;  
+            --text-main: #1A1A1A;
+            --text-light: #666666;
+            --bg-body: #F4F5F7; /* Slightly darker gray to make white cards pop */
             --white: #FFFFFF;
+            --radius-large: 24px;
+            --radius-small: 16px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Lato', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--cream);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        h1, h2, h3, .editorial-text {
+        h1, h2, h3, .serif {
             font-family: 'Playfair Display', serif;
-            color: var(--purple);
-            font-weight: 700;
+            color: var(--primary);
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; }
 
-        /* --- Elegant Button --- */
-        .btn-editorial {
-            display: inline-flex;
-            align-items: center;
-            padding: 15px 35px;
-            background-color: var(--purple);
-            color: var(--white);
-            font-family: 'Lato', sans-serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid var(--purple);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-editorial::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background-color: var(--gold);
-            transition: all 0.4s ease;
-            z-index: 1;
-        }
-
-        .btn-editorial:hover::before { left: 0; }
-        .btn-editorial span { position: relative; z-index: 2; transition: color 0.4s; }
-        .btn-editorial:hover span { color: var(--purple); font-weight: 700; }
-
-        /* --- Minimal Header --- */
+        /* --- Modern Header --- */
         header {
-            padding: 30px 5%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: transparent;
-            position: absolute;
-            width: 100%;
-            z-index: 100;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .brand img {
-            height: 60px;
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand-text strong {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            line-height: 1;
-            letter-spacing: 1px;
-        }
-
-        .brand-text span {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gold);
-            margin-top: 4px;
+        .nav-logo {
+            width: 60px; 
+            height: auto; 
+            transition: all 0.3s ease;
         }
 
         nav {
             display: flex;
-            gap: 40px;
+            gap: 30px;
+            align-items: center;
         }
 
         nav a {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        .btn-modern {
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(46,0,79,0.2);
+            color: var(--white);
+        }
+
+        /* --- Contained Hero Banner --- */
+        .hero-section {
+            padding: 30px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-container {
             position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            display: block;
-            width: 0; height: 1px;
-            background: var(--gold);
-            transition: width 0.3s;
-            margin-top: 5px;
-        }
-
-        nav a:hover::after { width: 100%; }
-
-        /* --- Asymmetrical Hero --- */
-        .hero {
-            min-height: 100vh;
+            width: 100%;
+            height: 450px;
+            border-radius: var(--radius-large);
+            overflow: hidden;
             display: flex;
             align-items: center;
-            padding: 120px 5% 60px;
-            position: relative;
+            padding: 50px;
+            /* Mobile First Background */
+            background: linear-gradient(to right, rgba(46,0,79,0.9) 0%, rgba(46,0,79,0.4) 100%), 
+                        url('assets/images/hero-ridge-mobile-six.webp') center/cover no-repeat;
+            background-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .hero-content {
-            flex: 0 0 55%;
-            padding-right: 5%;
             position: relative;
             z-index: 10;
+            max-width: 600px;
+            color: var(--white);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
         .hero-content h1 {
-            font-size: 5.5rem;
-            line-height: 0.95;
-            margin-bottom: 30px;
-        }
-
-        .hero-content h1 i {
-            color: var(--gold);
-            font-style: italic;
-            font-weight: 400;
+            color: var(--white);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
         .hero-content p {
             font-size: 1.1rem;
-            max-width: 80%;
-            margin-bottom: 40px;
-            border-left: 2px solid var(--gold);
-            padding-left: 20px;
-            color: #444;
+            opacity: 0.9;
+            margin-bottom: 30px;
         }
 
-        .hero-image-box {
-            flex: 0 0 45%;
-            position: relative;
-            height: 70vh;
-        }
-
-        .hero-img-inner {
-            width: 100%;
-            height: 100%;
-            background: url('hero-bg.jpg') center/cover;
-            background-color: #d1d1d1;
-            position: absolute;
-            right: -5%; /* Pulls image slightly off screen for editorial look */
-            box-shadow: -20px 20px 0px rgba(42, 8, 69, 0.05);
-        }
-
-        /* --- Staggered Grid Section --- */
-        .programs {
-            padding: 120px 5%;
-            background-color: var(--white);
-        }
-
-        .section-heading {
-            font-size: 3rem;
-            margin-bottom: 80px;
-            text-align: center;
-        }
-
-        .staggered-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            max-width: 1200px;
+        /* --- Bento Box Grid Section --- */
+        .bento-section {
+            padding: 60px 5%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .grid-item {
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 { font-size: 2.5rem; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(250px, auto);
+            gap: 24px;
+        }
+
+        .bento-card {
+            background: var(--white);
+            border-radius: var(--radius-large);
             padding: 40px;
-            background: var(--cream);
-            border-top: 1px solid var(--gold);
-        }
-
-        /* Stagger the middle column down */
-        .grid-item:nth-child(2) {
-            transform: translateY(40px);
-        }
-
-        .grid-item h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .grid-item p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* --- High Contrast Banner --- */
-        .dark-banner {
-            background-color: var(--purple);
-            color: var(--white);
-            padding: 100px 5%;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .banner-text {
-            flex: 0 0 60%;
+        .bento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
         }
 
-        .banner-text h2 {
-            color: var(--gold);
-            font-size: 2.5rem;
+        .bento-card h3 {
+            font-size: 1.6rem;
             margin-bottom: 15px;
+            z-index: 2;
         }
 
-        .banner-text p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 500px;
+        .bento-card p {
+            color: var(--text-light);
+            z-index: 2;
+            font-size: 1rem;
+        }
+
+        .bento-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        /* Specific Bento Sizings */
+        .card-large {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .card-large h3, .card-large p { color: var(--white); }
+
+        .card-wide {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--white) 0%, #f9f9f9 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .card-tall {
+            grid-row: span 2;
         }
 
         /* --- Footer --- */
         footer {
-            padding: 80px 5% 40px;
-            background: var(--cream);
+            background: var(--white);
+            padding: 60px 5% 30px;
+            margin-top: 60px;
             border-top: 1px solid #EAEAEA;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 60px;
-            justify-content: space-between;
         }
 
-        .footer-logo img { height: 80px; margin-bottom: 20px; }
-        
-        .footer-block h4 {
-            font-family: 'Lato', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            color: var(--gold);
-            margin-bottom: 20px;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .footer-block p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--purple);
-            margin-bottom: 10px;
+        /* --- Responsive Design --- */
+        @media (min-width: 768px) {
+            .nav-logo { width: 200px; }
+            .hero-container {
+                /* Desktop Override for Background */
+                background: linear-gradient(to right, rgba(46,0,79,0.9) 0%, rgba(46,0,79,0.2) 60%, transparent 100%), 
+                            url('assets/images/hero-ridge-desktop-six.webp') right/cover no-repeat;
+            }
         }
 
-        @media (max-width: 900px) {
-            .hero { flex-direction: column; padding-top: 150px; text-align: center; }
-            .hero-content { flex: 1; padding: 0; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .hero-content p { border: none; margin: 0 auto 40px; padding: 0; }
-            .hero-image-box { width: 100%; height: 400px; margin-top: 40px; }
-            .hero-img-inner { right: 0; box-shadow: none; }
-            .staggered-grid { grid-template-columns: 1fr; }
-            .grid-item:nth-child(2) { transform: translateY(0); }
-            .dark-banner { flex-direction: column; text-align: center; gap: 40px; }
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .card-large { grid-column: span 2; grid-row: span 1; }
+            .card-tall { grid-row: span 1; }
+        }
+
+        @media (max-width: 768px) {
             nav { display: none; }
+            .hero-container { padding: 40px 20px; height: auto; min-height: 400px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-large, .card-wide { grid-column: span 1; }
+            .bento-card { padding: 30px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="brand">
-            <img src="image_42bb3c.jpg" alt="Silveridge Crest">
-            <div class="brand-text">
-                <strong>Silveridge</strong>
-                <span>International Academy</span>
-            </div>
+        <div class="logo-container">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/silveridge_logo_assets/logo-desktop.png">
+                <img src="assets/silveridge_logo_assets/logo-mobile.png" alt="Silveridge Academy" class="nav-logo">
+            </picture>
         </div>
         <nav>
-            <a href="#about">The Academy</a>
             <a href="#academics">Academics</a>
             <a href="#boarding">Boarding</a>
+            <a href="#shop" style="color: var(--accent);">Little London</a>
+            <a href="#apply" class="btn-modern">Enroll Now</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Tradition,<br><i>meets</i><br>Tomorrow.</h1>
-            <p>A distinguished educational environment in Sunway City, providing exceptional academics from Baby Class through Grade 7 alongside premium boarding facilities.</p>
-            <a href="#admissions" class="btn-editorial"><span>Begin Admissions</span></a>
-        </div>
-        <div class="hero-image-box">
-            <!-- Ensure hero-bg.jpg is in your folder -->
-            <div class="hero-img-inner"></div>
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+               </div>
         </div>
     </section>
 
-    <section class="programs" id="academics">
-        <h2 class="section-heading">Educational Pathways</h2>
-        <div class="staggered-grid">
-            <div class="grid-item">
-                <h3>Early Years</h3>
-                <p>Our Baby Class and ECD programs foster curiosity, creativity, and a foundational love for learning in a beautifully nurtured environment.</p>
-            </div>
-            <div class="grid-item">
-                <h3>Primary Grades</h3>
-                <p>From Grade 1 to 7, our rigorous curriculum challenges students intellectually while supporting their emotional and social growth.</p>
-            </div>
-            <div class="grid-item">
-                <h3>Boarding Life</h3>
-                <p>We provide a structured, safe, and deeply supportive home away from home, developing independence and lifelong friendships.</p>
-            </div>
+    <section class="bento-section">
+        <div class="section-header">
+            <h2 class="serif">Experience Excellence</h2>
         </div>
-    </section>
+        
+        <div class="bento-grid">
+            <div class="bento-card card-large">
+                <div>
+                    <div class="bento-icon">📚</div>
+                    <h3 class="serif">Cambridge & ZIMSEC Curriculum</h3>
+                    <p style="opacity: 0.9; margin-bottom: 20px;">We offer a dual curriculum designed to provide international exposure while maintaining strong local relevance. From Early Childhood to Grade 7, we prepare learners for a successful future.</p>
+                </div>
+                <a href="#" style="color: var(--accent); font-weight: 600;">Explore Academics &rarr;</a>
+            </div>
 
-    <section class="dark-banner">
-        <div class="banner-text">
-            <h2>Little London Shop</h2>
-            <p>Quality meets style. Explore our sister store in Avondale for an exclusive range of premium clothing and accessories with unmatched customer care.</p>
-        </div>
-        <div>
-            <a href="#" class="btn-editorial" style="border-color: var(--gold);"><span>Visit Avondale Store</span></a>
+            <div class="bento-card">
+                <div class="bento-icon">🧸</div>
+                <h3 class="serif">Baby Class & ECD</h3>
+                <p>A nurturing, play-based approach for our youngest learners to build a lifelong love for learning.</p>
+            </div>
+
+            <div class="bento-card">
+                <div class="bento-icon">🛡️</div>
+                <h3 class="serif">Safe Environment</h3>
+                <p>100% commitment to student safety with early drop-offs and late pick-ups available for busy parents.</p>
+            </div>
+
+            <div class="bento-card card-tall" style="background: #FAF8F5;">
+                <div class="bento-icon">🏡</div>
+                <h3 class="serif">Premium Boarding</h3>
+                <p style="margin-bottom: 20px;">Safe, comfortable, and supervised boarding facilities available. We provide a structured home-away-from-home that develops independence, discipline, and community values.</p>
+                <p><strong>Nutritious Meals Included</strong></p>
+            </div>
+
+            <div class="bento-card card-wide" id="shop">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                    <div style="max-width: 400px;">
+                        <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Sister Company</span>
+                        <h3 class="serif" style="margin-top: 5px;">Little London Shop</h3>
+                        <p>Discover a wide range of quality clothing and accessories with excellent customer service at our Avondale location.</p>
+                    </div>
+                    <a href="#" class="btn-modern" style="background: var(--primary);">Visit The Shop</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-logo">
-            <img src="image_42bb3c.jpg" alt="Silveridge Logo">
-        </div>
-        <div class="footer-block">
-            <h4>The Academy</h4>
-            <p>676 Acacia Street<br>Sunway City, Harare</p>
-            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">077 673 8858</p>
-            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">silveridgeacademy@gmail.com</p>
-        </div>
-        <div class="footer-block">
-            <h4>Little London</h4>
-            <p>10 Kerry Road<br>Avondale, Harare</p>
-            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">077 673 8858</p>
-            <p style="font-family: 'Lato', sans-serif; font-size: 0.9rem;">+44 7447 918293</p>
+        <div class="footer-grid">
+            <div>
+                <picture>
+                    <source media="(min-width: 768px)" srcset="assets/silveridge_logo_assets/logo-footer.png">
+                    <img src="assets/silveridge_logo_assets/logo-mobile.png" alt="Logo" style="width: 180px; height: auto; margin-bottom: 15px;">
+                </picture>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Excellence in Education. Character for Life.</p>
+            </div>
+            <div>
+                <h4 class="serif" style="margin-bottom: 15px; color: var(--primary);">Silveridge Academy</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem;">676 Acacia Street, Sunway City<br>077 673 8858<br>silveridgeacademy@gmail.com</p>
+            </div>
+            <div>
+                <h4 class="serif" style="margin-bottom: 15px; color: var(--primary);">Little London Shop</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem;">10 Kerry Road, Avondale<br>077 673 8858<br>+44 7447 918293</p>
+            </div>
         </div>
     </footer>
 
