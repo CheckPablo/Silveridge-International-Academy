@@ -8,6 +8,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/silveridge_logo_assets/favicon.png">
     
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -15,12 +18,13 @@
     <style>
         :root {
             --primary: #2E004F; 
-            --primary-light: #F4EEF9; /* Soft purple background for the babies */
+            --primary-light: #F4EEF9; 
             --accent: #D4AF37;  
             --text-dark: #222222;
             --text-light: #666666;
             --bg-body: #FFFFFF;
-            --radius-soft: 30px; /* Extra rounded corners for a softer feel */
+            --radius-soft: 30px; 
+            --white: #FFFFFF;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -48,7 +52,8 @@
             z-index: 1000;
         }
 
-        .nav-logo { width: 60px; height: auto; }
+        /* Default to Mobile Shield Logo Size */
+        .nav-logo { width: 45px; height: auto; transition: all 0.3s ease; }
         
         nav { display: flex; gap: 30px; align-items: center; }
         nav a { color: var(--text-dark); font-weight: 500; font-size: 0.95rem; }
@@ -64,6 +69,56 @@
             box-shadow: 0 4px 15px rgba(46,0,79,0.15);
         }
         .btn-solid:hover { background-color: #1a002e; transform: translateY(-2px); color: #FFFFFF;}
+
+        /* --- Social Media & Floating WhatsApp --- */
+        .nav-social {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 1px solid #EAEAEA;
+        }
+        .nav-social a { color: var(--primary); font-size: 1.1rem; }
+        .nav-social a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .footer-social a {
+            color: #FFFFFF;
+            background: rgba(255,255,255,0.1);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1rem;
+        }
+        .footer-social a:hover { background: var(--accent); color: var(--primary); transform: translateY(-2px); }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { background-color: #1ebe57; color: #FFF; transform: translateY(-4px); }
 
         /* --- Baby Class Flyer Hero --- */
         .baby-hero {
@@ -170,11 +225,11 @@
 
         .baby-hero-img {
             width: 100%;
-            max-width: 550px;
+            max-width: 650px;
             height: auto;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(46,0,79,0.15);
-            border: 8px solid var(--white);
+            border: 6px solid var(--white);
         }
 
         /* --- Reassurance Banner --- */
@@ -292,6 +347,8 @@
         }
         @media (max-width: 768px) {
             nav { display: none; }
+            .nav-social { display: none; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 30px; }
             .baby-hero-text h1 { font-size: 3.5rem; }
             .baby-features { grid-template-columns: 1fr; }
             .baby-hero { padding-top: 40px; }
@@ -313,6 +370,11 @@
             <a href="#philosophy">Our Approach</a>
             <a href="#routine">Daily Routine</a>
             <a href="#apply" class="btn-solid">Enroll Your Child</a>
+            
+            <div class="nav-social">
+                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </nav>
     </header>
 
@@ -358,7 +420,10 @@
         </div>
         
         <div class="baby-hero-image-wrap">
-            <img src="assets/images/image_7cee22.jpg" alt="Silveridge Baby Class" class="baby-hero-img">
+            <picture>
+                <source media="(min-width: 768px)" srcset="assets/images/hero-ecd-desktop.webp">
+                <img src="assets/images/hero-ecd-mobile.webp" alt="Silveridge Baby Class" class="baby-hero-img">
+            </picture>
         </div>
     </section>
 
@@ -473,12 +538,23 @@
                 <p>📍 676 Acacia Street, Sunway City</p>
                 <p>📞 077 673 8858</p>
                 <p>✉ silveridgeacademy@gmail.com</p>
+                
+                <div class="footer-social">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/447447918293" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
         <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; color: #666; font-size: 0.8rem; margin-top: 40px;">
             &copy; 2026 Silveridge International Academy. All rights reserved.
         </div>
     </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/447447918293" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
